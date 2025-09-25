@@ -1,0 +1,339 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .profile-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90%;
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #000;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .content-section {
+      flex: 2;
+      padding: 20px;
+      position: relative;
+    }
+
+    .page-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .headline h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .bio p {
+      line-height: 1.6;
+    }
+
+    .read-more-btn {
+      background-color: #86c4ff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #86c4ff;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #555;
+    }
+    .app-container {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #f0f0f0;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 1200px;
+      margin: 50px auto;
+      overflow: hidden;
+      color: #000;
+    }
+
+    .sidebar {
+      width: 280px;
+      background-color: #2c2f33;
+      color: #fff;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .profile-section .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid #0099ff;
+    }
+
+    .upload-btn {
+      background-color: #86c4ff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .search-section input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #3b3e42;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    .categories ul, .albums ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .categories li, .albums li {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.2s;
+    }
+
+    .categories li:hover, .albums li:hover {
+      background-color: #3b3e42;
+    }
+
+    .categories .active, .albums .active {
+      background-color: #86c4ff;
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 30px;
+      background-color: #fff;
+      color: #000;
+      position: relative;
+    }
+
+    .content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .photo-item .date {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 5px 8px;
+      font-size: 0.8em;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="image-section">
+      <img src="1754229409147.jpg" alt="Profile Image of Jinny Pasquin">
+    </div>
+    <div class="content-section">
+      <div class="page-number">01</div>
+      <div class="headline">
+        <h1>HELLO, I'm Jinny Pasquin</h1>
+      </div>
+      <div class="bio">
+        <p>
+          I am a Multimedia Arts student with a passion for capturing images through a lens. 
+          I am constantly learning and exploring new techniques, from mastering manual settings 
+          to understanding composition and lighting.<span id="dots">...</span>
+          <span id="more" style="display: none;">
+            I am driven by the desire to tell stories and evoke emotions through my images.
+            As a student, I am eager to experiment and push my creative boundaries. I'm actively 
+            seeking opportunities to collaborate with other artists, learn from experienced professionals, 
+            and build a portfolio that reflects my unique perspective.
+          </span>
+        </p>
+        <button onclick="toggleReadMore()" class="read-more-btn" id="readMoreBtn">Read more</button>
+      </div>
+    </div>
+  </div>
+  <div class="app-container">
+    <div class="sidebar">
+      <div class="profile-section">
+        <img src="1754229409147.jpg" class="avatar" alt="Avatar">
+        <h3>Jinny Pasquin</h3>
+        <p>20 files</p>
+        <button class="upload-btn">UPLOAD</button>
+      </div>
+
+      <div class="search-section">
+        <input type="text" placeholder="Search files">
+      </div>
+
+      <nav class="categories">
+        <h4>CATEGORIES</h4>
+        <ul>
+          <li class="active">Photos</li>
+          <li>Videos</li>
+          <li>Projects</li>
+        </ul>
+      </nav>
+
+      <nav class="albums">
+        <h4>ALBUMS</h4>
+        <ul>
+          <li class="active">Photography</li>
+          <li>Travel 2025</li>
+          <li>Photo Exhibit 2023</li>
+          <li>BMMA Tour 2023</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content-area">
+      <header class="content-header">
+        <h2>Photography <small>(Photos)</small></h2>
+        <div class="page-number">02</div>
+      </header>
+
+      <main class="photo-grid">
+        <div class="photo-item">
+          <img src="IMG_20250822_142326 (1).jpg" alt="Road to Serenity">
+          <span class="date">08.22.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20250827_173254.jpg" alt="Photo 2">
+          <span class="date">08.27.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="20250522_090447.jpg" alt="Photo 3">
+          <span class="date">05.24.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20250825_232305 (1).jpg" alt="Photo 4">
+          <span class="date">08.25.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20210315_144729.jpg" alt="Photo 5">
+          <span class="date">07.14.2021</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20250829_051511.jpg" alt="Photo 6">
+          <span class="date">08.29.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20250822_143414.jpg" alt="Photo 7">
+          <span class="date">08.22.2025</span>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_20250825_232558 (2).jpg" alt="Photo 8">
+          <span class="date">12.01.2025</span>
+        </div>
+      </main>
+    </div>
+  </div>
+  <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">Top</button>
+  <script>
+    function toggleReadMore() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("readMoreBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        moreText.style.display = "none";
+        btnText.innerHTML = "Read more";
+      } else {
+        dots.style.display = "none";
+        moreText.style.display = "inline";
+        btnText.innerHTML = "Read less";
+      }
+    }
+
+    let scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+
+    function scrollToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+</body>
+</html>
